@@ -1,0 +1,72 @@
+[
+  {
+    "_id": "507f1f77bcf86cd799439011",
+    "email": "jan.kowalski@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T10:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439015",
+    "email": "anna.nowak@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T10:15:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439016",
+    "email": "piotr.wisniewski@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "admin",
+    "createdAt": "2025-05-07T10:30:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439017",
+    "email": "katarzyna.lewandowska@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T10:45:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439018",
+    "email": "michal.zielinski@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T11:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439019",
+    "email": "ewa.dabrowska@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T11:15:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439020",
+    "email": "tomasz.kaminski@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T11:30:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439021",
+    "email": "magdalena.szymanska@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T11:45:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439022",
+    "email": "krzysztof.wojcik@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "admin",
+    "createdAt": "2025-05-07T12:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439023",
+    "email": "zofia.malinowska@example.com",
+    "password": "$2b$10$hashedpassword123",
+    "role": "user",
+    "createdAt": "2025-05-07T12:15:00Z"
+  }
+]

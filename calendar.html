@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalendarz - Mój Kalendarz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<header>
+  <h1>Mój Kalendarz</h1>
+  <nav>
+    <ul>
+      <li><a href="calendar.html">Kalendarz</a></li>
+      <li><a href="logout.html" id="logoutLink">Wyloguj się</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="calendar-controls">
+    <div class="quick-add">
+      <input type="text" id="quickAddInput" placeholder="Dodaj wydarzenie..." aria-label="Szybkie dodawanie wydarzenia">
+      <button id="quickAddButton" aria-label="Dodaj szybko wydarzenie"><span class="material-icons">add</span></button>
+    </div>
+    <div class="view-switcher">
+      <button id="viewMonth" class="active">Miesiąc</button>
+      <button id="viewWeek">Tydzień</button>
+      <button id="viewDay">Dzień</button>
+    </div>
+    <div class="month-navigation">
+      <button id="prevMonth" aria-label="Poprzedni miesiąc"><span class="material-icons">chevron_left</span></button>
+      <span id="monthYear"></span>
+      <button id="nextMonth" aria-label="Następny miesiąc"><span class="material-icons">chevron_right</span></button>
+    </div>
+  </section>
+  <section>
+    <div id="calendar"></div>
+  </section>
+
+  <!-- Modal do dodawania/edytowania wydarzenia -->
+  <div id="eventModal" class="modal hidden" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <span class="close" aria-label="Zamknij modal">×</span>
+      <form id="eventForm">
+        <div class="modal-header">
+          <input type="text" id="eventTitleInput" placeholder="Dodaj tytuł" required>
+        </div>
+        <div class="modal-body">
+          <div class="date-row">
+            <span class="material-icons">event</span>
+            <div class="date-field">
+              <label for="eventDateStart">Data rozpoczęcia:</label>
+              <input type="datetime-local" id="eventDateStart" required>
+            </div>
+            <div class="date-field">
+              <label for="eventDateEnd">Data zakończenia:</label>
+              <input type="datetime-local" id="eventDateEnd">
+            </div>
+          </div>
+          <div class="category-row">
+            <span class="material-icons">label</span>
+            <div class="category-field">
+              <label for="eventCategory">Kategoria:</label>
+              <select id="eventCategory">
+                <option value="work" data-color="#1a73e8">Praca</option>
+                <option value="personal" data-color="#34c759">Osobiste</option>
+                <option value="other" data-color="#f4b400">Inne</option>
+              </select>
+            </div>
+          </div>
+          <div class="color-row">
+            <span class="material-icons">palette</span>
+            <div class="color-field">
+              <label for="eventColor">Kolor wydarzenia:</label>
+              <input type="color" id="eventColor">
+            </div>
+          </div>
+          <div class="description-row">
+            <span class="material-icons">description</span>
+            <div class="description-field">
+              <label for="eventDescription">Opis:</label>
+              <textarea id="eventDescription" rows="3" placeholder="Dodaj szczegóły"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="deleteEvent" class="hidden">Usuń</button>
+          <button type="submit" id="saveEvent">Zapisz</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast hidden"></div>
+
+<footer>
+  <p>© 2025 Mój Kalendarz</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/calendar.js"></script>
+</body>
+</html>
