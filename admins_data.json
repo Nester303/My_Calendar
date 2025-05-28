@@ -1,0 +1,14 @@
+[
+  {
+    "_id": "507f1f77bcf86cd799439013",
+    "email": "admin1@example.com",
+    "adminCode": "ADMIN123",
+    "createdAt": "2025-05-07T08:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439014",
+    "email": "admin2@example.com",
+    "adminCode": "SUPER456",
+    "createdAt": "2025-05-07T08:30:00Z"
+  }
+]

@@ -1,0 +1,134 @@
+[
+  {
+    "_id": "507f1f77bcf86cd799439012",
+    "title": "Spotkanie projektowe",
+    "start": "2025-05-07T10:00:00Z",
+    "end": "2025-05-07T11:00:00Z",
+    "category": "work",
+    "color": "#1a73e8",
+    "description": "Omówienie postępów projektu",
+    "userId": "507f1f77bcf86cd799439011",
+    "createdAt": "2025-05-07T09:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439024",
+    "title": "Obiad z rodziną",
+    "start": "2025-05-08T13:00:00Z",
+    "end": "2025-05-08T14:30:00Z",
+    "category": "personal",
+    "color": "#34c759",
+    "description": "Obiad w restauracji",
+    "userId": "507f1f77bcf86cd799439011",
+    "createdAt": "2025-05-07T09:30:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439025",
+    "title": "Szkolenie zespołu",
+    "start": "2025-05-09T09:00:00Z",
+    "end": "2025-05-09T12:00:00Z",
+    "category": "work",
+    "color": "#1a73e8",
+    "description": "Szkolenie z nowych narzędzi",
+    "userId": "507f1f77bcf86cd799439015",
+    "createdAt": "2025-05-07T10:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439026",
+    "title": "Wizyta u lekarza",
+    "start": "2025-05-10T15:00:00Z",
+    "end": "2025-05-10T16:00:00Z",
+    "category": "personal",
+    "color": "#34c759",
+    "description": "Kontrolna wizyta",
+    "userId": "507f1f77bcf86cd799439015",
+    "createdAt": "2025-05-07T10:30:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439027",
+    "title": "Spotkanie z klientem",
+    "start": "2025-05-07T14:00:00Z",
+    "end": "2025-05-07T15:30:00Z",
+    "category": "work",
+    "color": "#1a73e8",
+    "description": "Omówienie kontraktu",
+    "userId": "507f1f77bcf86cd799439016",
+    "createdAt": "2025-05-07T11:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439028",
+    "title": "Siłownia",
+    "start": "2025-05-08T18:00:00Z",
+    "end": "2025-05-08T19:30:00Z",
+    "category": "personal",
+    "color": "#34c759",
+    "description": "Trening siłowy",
+    "userId": "507f1f77bcf86cd799439016",
+    "createdAt": "2025-05-07T11:30:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439029",
+    "title": "Warsztaty programistyczne",
+    "start": "2025-05-11T10:00:00Z",
+    "end": "2025-05-11T16:00:00Z",
+    "category": "other",
+    "color": "#f4b400",
+    "description": "Nauka nowego frameworka",
+    "userId": "507f1f77bcf86cd799439016",
+    "createdAt": "2025-05-07T12:00:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439030",
+    "title": "Spotkanie zespołu",
+    "start": "2025-05-07T09:00:00Z",
+    "end": "2025-05-07T10:30:00Z",
+    "category": "work",
+    "color": "#1a73e8",
+    "description": "Planowanie sprintu",
+    "userId": "507f1f77bcf86cd799439017",
+    "createdAt": "2025-05-07T08:45:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439031",
+    "title": "Urodziny przyjaciela",
+    "start": "2025-05-12T18:00:00Z",
+    "end": "2025-05-12T22:00:00Z",
+    "category": "personal",
+    "color": "#34c759",
+    "description": "Impreza urodzinowa",
+    "userId": "507f1f77bcf86cd799439017",
+    "createdAt": "2025-05-07T09:15:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439032",
+    "title": "Prezentacja projektu",
+    "start": "2025-05-08T11:00:00Z",
+    "end": "2025-05-08T12:00:00Z",
+    "category": "work",
+    "color": "#1a73e8",
+    "description": "Prezentacja dla zarządu",
+    "userId": "507f1f77bcf86cd799439018",
+    "createdAt": "2025-05-07T10:45:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439033",
+    "title": "Kurs online",
+    "start": "2025-05-09T17:00:00Z",
+    "end": "2025-05-09T19:00:00Z",
+    "category": "other",
+    "color": "#f4b400",
+    "description": "Kurs z baz danych",
+    "userId": "507f1f77bcf86cd799439018",
+    "createdAt": "2025-05-07T11:15:00Z"
+  },
+  {
+    "_id": "507f1f77bcf86cd799439034",
+    "title": "Spacer z psem",
+    "start": "2025-05-07T17:00:00Z",
+    "end": "2025-05-07T17:30:00Z",
+    "category": "personal",
+    "color": "#34c759",
+    "description": "Wieczorny spacer",
+    "userId": "507f1f77bcf86cd799439018",
+    "createdAt": "2025-05-07T12:15:00Z"
+  }
+]
