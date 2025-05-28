@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O nas - Mój Kalendarz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<header>
+  <h1>Mój Kalendarz</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Strona Główna</a></li>
+      <li><a href="about.html">O nas</a></li>
+      <li><a href="contact.html">Kontakt</a></li>
+      <li><a href="register.html">Rejestracja</a></li>
+      <li><a href="login.html" id="loginLink">Logowanie</a></li>
+      <li><a href="logout.html" id="logoutLink" class="hidden">Wyloguj się</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h2>O stronie</h2>
+    <p>Mój Kalendarz, aby pomóc Ci organizować czas w prosty sposób.</p>
+  </section>
+</main>
+
+<a href="admin_dashboard.html" class="admin-button" aria-label="Przejdź do panelu administracyjnego">
+  <span class="material-icons">admin_panel_settings</span>
+</a>
+
+<div id="toast" class="toast hidden"></div>
+
+<footer>
+  <p>© 2025 Mój Kalendarz</p>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
