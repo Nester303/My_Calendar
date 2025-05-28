@@ -1,146 +1,96 @@
-// frontend/js/auth.js
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-    const adminButton = document.getElementById('adminButton');
-    const logoutLink = document.getElementById('logoutLink');
-    const adminCodeModal = document.getElementById('adminCodeModal');
-    const confirmAdminCodeButton = document.getElementById('confirmAdminCode');
-    let registrationData = null;
+// backend/routes/auth.js
+const express = require('express');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+const Admin = require('../models/Admin');
+const router = express.Router();
 
-    // Dynamiczne zarządzanie nawigacją
-    const token = localStorage.getItem('token');
-    if (token) {
-        if (logoutLink) logoutLink.style.display = 'block';
-        fetch('http://localhost:3000/api/auth/admin', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-            .then(response => {
-                if (response.ok && adminButton) {
-                    adminButton.style.display = 'flex';
-                    adminButton.onclick = () => window.location.href = 'admin_dashboard.html';
-                }
-            })
-            .catch(() => {
-                if (adminButton) adminButton.style.display = 'none';
-            });
-    } else {
-        if (logoutLink) logoutLink.style.display = 'none';
-        if (adminButton) adminButton.style.display = 'none';
+// Rejestracja
+router.post('/register', async (req, res) => {
+    const { email, password, confirmPassword, role, adminCode } = req.body;
+
+    if (!email || !password || !confirmPassword) {
+        return res.status(400).json({ message: 'Wypełnij wszystkie pola' });
     }
 
-    // Funkcja do zamykania modalu
-    window.closeAdminCodeModal = () => {
-        if (adminCodeModal) adminCodeModal.classList.add('hidden');
-    };
-
-    // Sprawdzenie roli i pokazywanie modalu
-    window.checkRole = () => {
-        const role = document.getElementById('role').value;
-        if (role === 'admin' && adminCodeModal) {
-            adminCodeModal.classList.remove('hidden');
-        } else if (adminCodeModal) {
-            adminCodeModal.classList.add('hidden');
-        }
-    };
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email')?.value?.trim();
-            const password = document.getElementById('password')?.value?.trim();
-            const adminCode = document.getElementById('adminCode')?.value?.trim();
-
-            if (!email || !password) {
-                showToast('Wypełnij email i hasło!', 'error');
-                return;
-            }
-
-            try {
-                const response = await fetch('http://localhost:3000/api/auth/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password, adminCode })
-                });
-                const result = await response.json();
-                if (!response.ok) throw new Error(result.message || 'Błąd logowania');
-                localStorage.setItem('token', result.token);
-                showToast('Zalogowano pomyślnie!', 'success');
-                setTimeout(() => window.location.href = 'calendar.html', 1000);
-            } catch (err) {
-                showToast(err.message, 'error');
-            }
-        });
+    if (password !== confirmPassword) {
+        return res.status(400).json({ message: 'Hasła nie są zgodne' });
     }
 
-    if (registerForm) {
-        registerForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email')?.value?.trim();
-            const password = document.getElementById('password')?.value?.trim();
-            const confirmPassword = document.getElementById('confirmPassword')?.value?.trim();
-            const role = document.getElementById('role')?.value;
-
-            if (!email || !password || !confirmPassword) {
-                showToast('Wypełnij wszystkie pola!', 'error');
-                return;
-            }
-            if (password !== confirmPassword) {
-                showToast('Hasła nie są zgodne!', 'error');
-                return;
-            }
-
-            registrationData = { email, password, confirmPassword, role };
-
-            if (role === 'admin') {
-                // Modal już pokazany przez checkRole(), czekamy na potwierdzenie
-                return; // Zatrzymujemy rejestrację, dopóki kod nie zostanie potwierdzony
-            } else {
-                // Dla użytkownika rejestracja bez kodu
-                try {
-                    const response = await fetch('http://localhost:3000/api/auth/register', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(registrationData)
-                    });
-                    const result = await response.json();
-                    if (!response.ok) throw new Error(result.message || 'Błąd rejestracji');
-                    localStorage.setItem('token', result.token);
-                    showToast('Zarejestrowano pomyślnie!', 'success');
-                    setTimeout(() => window.location.href = 'calendar.html', 1000);
-                } catch (err) {
-                    showToast(err.message, 'error');
-                }
-            }
-        });
-
-        // Obsługa potwierdzenia kodu w modalu
-        if (confirmAdminCodeButton) {
-            confirmAdminCodeButton.addEventListener('click', async () => {
-                const adminCode = document.getElementById('modalAdminCode')?.value?.trim();
-                if (!adminCode) {
-                    showToast('Podaj kod administracyjny!', 'error');
-                    return;
-                }
-
-                registrationData.adminCode = adminCode;
-                closeAdminCodeModal();
-
-                try {
-                    const response = await fetch('http://localhost:3000/api/auth/register', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(registrationData)
-                    });
-                    const result = await response.json();
-                    if (!response.ok) throw new Error(result.message || 'Błąd rejestracji');
-                    localStorage.setItem('token', result.token);
-                    showToast('Zarejestrowano pomyślnie!', 'success');
-                    setTimeout(() => window.location.href = 'calendar.html', 1000);
-                } catch (err) {
-                    showToast(err.message, 'error');
-                }
-            });
+    try {
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email już istnieje' });
         }
+
+        let userRole = 'user';
+        if (role === 'admin') {
+            const adminEntry = await Admin.findOne();
+            if (!adminEntry || adminCode !== adminEntry.code) {
+                return res.status(403).json({ message: 'Nieprawidłowy kod administracyjny' });
+            }
+            userRole = 'admin';
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = new User({ email, password: hashedPassword, role: userRole });
+        await user.save();
+
+        const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.status(201).json({ token });
+    } catch (err) {
+        res.status(500).json({ message: 'Błąd serwera' });
     }
 });
+
+// Logowanie
+router.post('/login', async (req, res) => {
+    const { email, password, adminCode } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Wypełnij email i hasło' });
+    }
+
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'Nieprawidłowy email lub hasło' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Nieprawidłowy email lub hasło' });
+        }
+
+        // Weryfikacja kodu admina, jeśli użytkownik jest adminem
+        if (user.role === 'admin' && adminCode !== (await Admin.findOne()).code) {
+            return res.status(403).json({ message: 'Nieprawidłowy kod administracyjny' });
+        }
+
+        const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.status(200).json({ token });
+    } catch (err) {
+        res.status(500).json({ message: 'Błąd serwera' });
+    }
+});
+
+// Sprawdzenie, czy użytkownik jest adminem
+router.get('/admin', async (req, res) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+        return res.status(401).json({ message: 'Brak tokena' });
+    }
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        if (decoded.role !== 'admin') {
+            return res.status(403).json({ message: 'Brak uprawnień admina' });
+        }
+        res.status(200).json({ message: 'Użytkownik jest adminem' });
+    } catch (err) {
+        res.status(401).json({ message: 'Nieprawidłowy token' });
+    }
+});
+
+module.exports = router;
