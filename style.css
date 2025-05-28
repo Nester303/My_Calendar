@@ -1,0 +1,478 @@
+/* frontend/css/style.css */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f3f4;
+    color: #202124;
+}
+
+header {
+    background-color: #1a73e8;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0 0;
+}
+
+nav ul li a,
+.nav-button {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+    padding: 10px 15px;
+    background-color: #1a73e8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+nav ul li a:hover,
+.nav-button:hover {
+    opacity: 0.8;
+    background-color: #1557b0;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #e8eaed;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+#calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.quick-add {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 400px;
+    flex-grow: 1;
+}
+
+.quick-add input {
+    padding: 0.8rem;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.quick-add input:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+.quick-add button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quick-add button:hover {
+    background-color: #174ea6;
+}
+
+.view-switcher button {
+    background-color: #f1f3f4;
+    border: 1px solid #dadce0;
+    padding: 8px 16px;
+    margin-right: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.view-switcher button.active,
+.view-switcher button:hover {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.month-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.month-navigation button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #1a73e8;
+}
+
+.month-navigation span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.contact-form,
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+.contact-form input,
+.contact-form textarea,
+.auth-form input,
+.auth-form select {
+    padding: 0.8rem;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.auth-form input:focus,
+.auth-form select:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+.contact-form button,
+.auth-form button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.contact-form button:hover,
+.auth-form button:hover {
+    background-color: #174ea6;
+}
+
+.user-list,
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.user-list li,
+.event-list li {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-list li button,
+.event-list li button {
+    background-color: #d93025;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.user-list li button:hover,
+.event-list li button:hover {
+    background-color: #b71c1c;
+}
+
+.admin-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1a73e8;
+    color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+.admin-button:hover {
+    background-color: #174ea6;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.modal-header input {
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: none;
+    width: 100%;
+    outline: none;
+    color: #202124;
+}
+
+.modal-header input::placeholder {
+    color: #5f6368;
+}
+
+.modal-body {
+    padding: 1rem 1.5rem;
+}
+
+.date-row,
+.category-row,
+.color-row,
+.description-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.date-row .material-icons,
+.category-row .material-icons,
+.color-row .material-icons,
+.description-row .material-icons {
+    color: #5f6368;
+    font-size: 1.2rem;
+}
+
+.date-field,
+.category-field,
+.color-field,
+.description-field {
+    flex: 1;
+}
+
+.date-field label,
+.category-field label,
+.color-field label,
+.description-field label {
+    font-size: 0.9rem;
+    color: #5f6368;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.date-field input,
+.category-field select,
+.color-field input,
+.description-field textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+.date-field input:focus,
+.category-field select:focus,
+.color-field input:focus,
+.description-field textarea:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+.description-field textarea {
+    resize: vertical;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    border-top: 1px solid #e8eaed;
+}
+
+.modal-footer button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+#saveEvent {
+    background-color: #1a73e8;
+    color: white;
+}
+
+#saveEvent:hover {
+    background-color: #174ea6;
+}
+
+#deleteEvent {
+    background-color: transparent;
+    color: #d93025;
+}
+
+#deleteEvent:hover {
+    background-color: #fce8e6;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5f6368;
+}
+
+.hidden {
+    display: none;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    z-index: 1000;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+}
+
+.toast.success {
+    background-color: #34c759;
+}
+
+.toast.error {
+    background-color: #ff3b30;
+}
+
+.toast.hidden {
+    display: none;
+}
+
+.fc .fc-timegrid-slot-label,
+.fc .fc-daygrid-day {
+    cursor: pointer;
+}
+
+.fc .fc-timegrid-slot-label:hover,
+.fc .fc-daygrid-day:hover {
+    background-color: #e8f0fe;
+}
+
+.fc .fc-event {
+    transition: transform 0.2s;
+    cursor: move;
+}
+
+.fc .fc-event:hover {
+    transform: scale(1.02);
+}
+
+.fc .fc-highlight {
+    background-color: #e8f0fe !important;
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    #calendar-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .quick-add {
+        max-width: 100%;
+    }
+
+    .date-row,
+    .color-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
